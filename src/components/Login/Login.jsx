@@ -50,6 +50,27 @@ const Wrap = styled.div`
   background-size: cover;
 `;
 
+const appear = keyframes`
+  from {opacity : 0}
+  99% {opacity : 0}
+  to { opacity : 1}
+`;
+
+const spread = keyframes`
+  0% {width : 15px}
+  80%{width : 15px}
+  to {width : 500px}
+`;
+
+const moveUp = keyframes`
+  from {
+      margin-bottom : -2000px;
+  }
+  to {
+      margin-bottom : 0;
+  }
+`;
+
 const ContentWrap = styled.div`
   position: relative;
   display: flex;
@@ -59,6 +80,8 @@ const ContentWrap = styled.div`
   width: 500px;
   height: 60%;
   background: rgba(255, 255, 255, 0.95);
+  animation: ${moveUp} 0.8s, ${spread} 0.9s;
+  animation-fill-mode: backwards;
   border-radius: 10px;
 `;
 
@@ -79,6 +102,9 @@ const LoginWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: ${appear} 0.1s;
+  animation-fill-mode: backwards;
+  animation-delay: 1s;
 `;
 
 const LoginTitle = styled.div`
