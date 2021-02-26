@@ -18,7 +18,7 @@ const Login = () => {
         </LogoWrap>
         <LoginWrap>
           <LoginTitle>Welcome to Issue tracker !</LoginTitle>
-          <LoginTitle>- SNS 계정으로 시작하기 -</LoginTitle>
+          <LoginTitle> SNS 계정으로 시작하기 </LoginTitle>
           <LoginButtonWrap>
             <LoginButton kakao>
               <img src={kakao} style={{ width: '25px' }} />
