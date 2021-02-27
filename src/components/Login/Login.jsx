@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
-import { mobileModeWidth } from '@/common/constants/responsiveWidth';
+import { mobileModeWidth, responsiveHeight } from '@/common/constants/responsiveSize';
 
 import background from '@/image/background/main.jpg';
 import blackLogo from '@/image/logo/logo_b.png';
@@ -18,7 +18,7 @@ const Login = () => {
           <Logo src={blackLogo} />
         </LogoWrap>
         <LoginWrap>
-          <LoginTitle>Welcome to Issue-tracker!</LoginTitle>
+          <LoginTitle>Welcome to IssueTracker!</LoginTitle>
           <LoginTitle> SNS 계정으로 시작하기 </LoginTitle>
           <LoginButtonWrap>
             <LoginButton kakao>
@@ -44,11 +44,12 @@ const Wrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 115px 50px 50px 50px;
   width: 100%;
   height: 100%;
+  min-height: 40%;
   background-image: url('main.jpg');
   background-size: cover;
+  padding: 115px 50px 50px 50px;
   @media only screen and (max-width: ${mobileModeWidth}) {
     padding: 10px;
   }
@@ -84,13 +85,14 @@ const ContentWrap = styled.div`
   width: 500px;
   height: 60%;
   background: rgba(255, 255, 255, 0.95);
-  animation: ${moveUp} 0.8s, ${spread} 0.9s;
-  animation-fill-mode: backwards;
   border-radius: 10px;
   padding: 10px;
+  animation: ${moveUp} 0.8s, ${spread} 0.9s;
+  animation-fill-mode: backwards;
+
   @media only screen and (max-width: ${mobileModeWidth}) {
-    max-width: 300px;
     width: 100%;
+    max-width: 300px;
     height: 70%;
   }
 `;
@@ -101,6 +103,9 @@ const LogoWrap = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  @media only screen and (max-width: ${mobileModeWidth}) {
+    top: -45px;
+  }
 `;
 
 const Logo = styled.img`
@@ -108,18 +113,27 @@ const Logo = styled.img`
   @media only screen and (max-width: ${mobileModeWidth}) {
     width: 90px;
   }
+  @media only screen and (max-height: ${responsiveHeight}) {
+    width: 90px;
+  }
 `;
 
 const LoginWrap = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  padding: 75px 0 0 0;
   animation: ${appear} 0.1s;
   animation-fill-mode: backwards;
   animation-delay: 1s;
-  padding: 50px 0 0 0;
+  @media only screen and (max-width: ${mobileModeWidth}) {
+    padding: 10px 0 0 0;
+  }
+  @media only screen and (max-height: ${responsiveHeight}) {
+    padding: 35px 0 0 0;
+  }
 `;
 
 const LoginTitle = styled.div`
@@ -128,11 +142,16 @@ const LoginTitle = styled.div`
   width: 100%;
   font-family: 'GmarketSansLight';
   font-weight: bold;
+  text-align: center;
   font-size: 20px;
   margin: 0 0 30px 0;
   @media only screen and (max-width: ${mobileModeWidth}) {
     font-size: 14px;
     max-width: 80%;
+  }
+  @media only screen and (max-height: ${responsiveHeight}) {
+    font-size: 17px;
+    margin: 0 0 15px 0;
   }
 `;
 
@@ -144,9 +163,13 @@ const LoginButtonWrap = styled.div`
   padding: 0 0 30px 0;
   margin: 20px 0 0 0;
   @media only screen and (max-width: ${mobileModeWidth}) {
-    max-width: 250px;
     width: 80%;
+    max-width: 250px;
     border-bottom: 1px solid black;
+  }
+  @media only screen and (max-height: ${responsiveHeight}) {
+    border-bottom: 1px solid black;
+    padding: 0 0 10px 0;
   }
 `;
 
@@ -180,6 +203,14 @@ const LoginButton = styled.button`
     width: 35px;
   }
   @media only screen and (max-width: ${mobileModeWidth}) {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    img {
+      width: 25px;
+    }
+  }
+  @media only screen and (max-height: ${responsiveHeight}) {
     width: 40px;
     height: 40px;
     border-radius: 40px;
