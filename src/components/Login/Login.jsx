@@ -18,13 +18,13 @@ const Login = () => {
           <Logo src={blackLogo} />
         </LogoWrap>
         <LoginWrap>
-          <LoginTitle>Welcome to Issue tracker !</LoginTitle>
+          <LoginTitle>Welcome to Issue-tracker!</LoginTitle>
           <LoginTitle> SNS 계정으로 시작하기 </LoginTitle>
           <LoginButtonWrap>
             <LoginButton kakao>
               <img src={kakao} style={{ width: '22px' }} />
             </LoginButton>
-            <LoginButton naver>
+            <LoginButton style={{ margin: '0 5px' }} naver>
               <img src={naver} />
             </LoginButton>
             <LoginButton google>
@@ -49,6 +49,9 @@ const Wrap = styled.div`
   height: 100%;
   background-image: url('main.jpg');
   background-size: cover;
+  @media only screen and (max-width: ${mobileModeWidth}) {
+    padding: 10px;
+  }
 `;
 
 const appear = keyframes`
@@ -84,8 +87,10 @@ const ContentWrap = styled.div`
   animation: ${moveUp} 0.8s, ${spread} 0.9s;
   animation-fill-mode: backwards;
   border-radius: 10px;
+  padding: 10px;
   @media only screen and (max-width: ${mobileModeWidth}) {
-    width: 300px;
+    max-width: 300px;
+    width: 100%;
     height: 70%;
   }
 `;
@@ -106,26 +111,28 @@ const Logo = styled.img`
 `;
 
 const LoginWrap = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   animation: ${appear} 0.1s;
   animation-fill-mode: backwards;
   animation-delay: 1s;
   padding: 50px 0 0 0;
-  @media only screen and (max-width: ${mobileModeWidth}) {
-    padding: 60px 0 0 0;
-  }
 `;
 
 const LoginTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
   font-family: 'GmarketSansLight';
   font-weight: bold;
   font-size: 20px;
   margin: 0 0 30px 0;
   @media only screen and (max-width: ${mobileModeWidth}) {
-    font-size: 15px;
+    font-size: 14px;
+    max-width: 80%;
   }
 `;
 
@@ -134,9 +141,11 @@ const LoginButtonWrap = styled.div`
   justify-content: space-between;
   width: 320px;
   border-bottom: 2px solid black;
-  padding: 30px;
+  padding: 0 0 30px 0;
+  margin: 20px 0 0 0;
   @media only screen and (max-width: ${mobileModeWidth}) {
-    width: 250px;
+    max-width: 250px;
+    width: 80%;
     border-bottom: 1px solid black;
   }
 `;
