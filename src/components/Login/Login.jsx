@@ -83,17 +83,25 @@ const ContentWrap = styled.div`
   justify-content: center;
   align-items: center;
   width: 500px;
-  height: 60%;
+  height: 500px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 10px;
   padding: 10px;
   animation: ${moveUp} 0.8s, ${spread} 0.9s;
   animation-fill-mode: backwards;
-
   @media only screen and (max-width: ${mobileModeWidth}) {
     width: 100%;
     max-width: 300px;
-    height: 70%;
+    max-height: 350px;
+  }
+  @media only screen and (max-height: ${responsiveHeight}) {
+    max-width: 500px;
+    max-height: 350px;
+  }
+  @media only screen and (max-width: ${mobileModeWidth}) and (max-height: ${responsiveHeight}) {
+    width: 100%;
+    max-width: 300px;
+    max-height: 350px;
   }
 `;
 
@@ -103,17 +111,11 @@ const LogoWrap = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  @media only screen and (max-width: ${mobileModeWidth}) {
-    top: -45px;
-  }
 `;
 
 const Logo = styled.img`
   width: 130px;
   @media only screen and (max-width: ${mobileModeWidth}) {
-    width: 90px;
-  }
-  @media only screen and (max-height: ${responsiveHeight}) {
     width: 90px;
   }
 `;
