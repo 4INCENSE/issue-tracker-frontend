@@ -10,7 +10,9 @@ const fontSize = {
 
 const color = {
   themeWine: '#35282d',
-  themeBlue: '#5d91ef'
+  themeBlue: '#5d91ef',
+  themeLightGray: '#e2e1dd',
+  themeGray: '#d1d0cc'
 };
 
 const header = {
@@ -18,4 +20,10 @@ const header = {
   menuHover: color.themeBlue
 };
 
-export default { fontSize, color, header };
+const filter = {
+  buttonBackground: color.themeLightGray,
+  inputHover: color.themeBlue,
+  border: color.themeGray
+};
+
+export default { fontSize, color, header, filter };
