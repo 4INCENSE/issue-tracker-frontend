@@ -32,7 +32,6 @@ const Wrap = styled.div`
   width: 100%;
   height: 80px;
   background: ${({ theme }) => theme.header.background};
-  padding: 20px;
 `;
 
 const HeaderContent = styled.div`
@@ -40,10 +39,11 @@ const HeaderContent = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 0 50px;
 `;
 
 const Logo = styled.img`
-  width: 60px;
+  width: 58px;
   cursor: pointer;
 `;
 
@@ -63,7 +63,6 @@ const Triangle = styled.div`
   border-bottom: 7px solid white;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
-  z-index: 1;
 `;
 
 const UserMenuWrap = styled.div`
