@@ -4,7 +4,7 @@ import styled, { css, keyframes } from 'styled-components';
 import { mobileModeWidth, responsiveHeight } from '@/common/constants/responsiveSize';
 
 import background from '@/image/background/main.jpg';
-import blackLogo from '@/image/logo/logo_b.png';
+import blackLogo from '@/image/logo/serviceLogo/logo_b.png';
 
 import google from '@/image/logo/snsLogo/google.png';
 import kakao from '@/image/logo/snsLogo/kakao.png';
