@@ -8,4 +8,14 @@ const fontSize = {
   title: '32px'
 };
 
-export default { fontSize };
+const color = {
+  themeWine: '#35282d',
+  themeBlue: '#5d91ef'
+};
+
+const header = {
+  background: color.themeWine,
+  menuHover: color.themeBlue
+};
+
+export default { fontSize, color, header };

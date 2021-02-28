@@ -4,7 +4,7 @@ import styled, { css, keyframes } from 'styled-components';
 import { mobileModeWidth, responsiveHeight } from '@/common/constants/responsiveSize';
 
 import background from '@/image/background/main.jpg';
-import blackLogo from '@/image/logo/logo_b.png';
+import blackLogo from '@/image/logo/serviceLogo/logo_b.png';
 
 import google from '@/image/logo/snsLogo/google.png';
 import kakao from '@/image/logo/snsLogo/kakao.png';
@@ -145,14 +145,14 @@ const LoginTitle = styled.div`
   font-family: 'GmarketSansLight';
   font-weight: bold;
   text-align: center;
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.fontSize.large};
   margin: 0 0 30px 0;
   @media only screen and (max-width: ${mobileModeWidth}) {
-    font-size: 14px;
+    font-size: ${({ theme }) => theme.fontSize.base};
     max-width: 80%;
   }
   @media only screen and (max-height: ${responsiveHeight}) {
-    font-size: 17px;
+    font-size: ${({ theme }) => theme.fontSize.regular};
     margin: 0 0 15px 0;
   }
 `;
