@@ -37,6 +37,7 @@ const Tap = styled.div`
   cursor: pointer;
   &:hover {
     background: ${({ theme }) => theme.Main.labelMilestoneTap.hover};
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1) inset;
   }
   img {
     width: 18px;
