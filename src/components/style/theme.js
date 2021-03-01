@@ -29,4 +29,9 @@ const filter = {
   buttonHover: color.themeSuperLightIvory
 };
 
-export default { fontSize, color, header, filter };
+const LabelMilestoneTap = {
+  border: color.themeIvory,
+  hover: color.themeLightIvory
+};
+
+export default { fontSize, color, header, filter, LabelMilestoneTap };
