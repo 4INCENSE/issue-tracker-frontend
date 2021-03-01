@@ -1,19 +1,23 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
+
 import tag from '@/image/icon/tag.svg';
 import milestone from '@/image/icon/milestone.svg';
 
 const LabelMilestoneTap = () => {
   return (
     <Wrap>
-      <Tap label>
+      <Tap labels>
         <img src={tag} />
         Labels
+        <TapNumber>12</TapNumber>
       </Tap>
-      <Tap milestone>
+      <Tap milestones>
         <img src={milestone} />
         Milestones
+        <TapNumber>1</TapNumber>
       </Tap>
     </Wrap>
   );
@@ -25,13 +29,18 @@ const Wrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 20px 0;
+  @media only screen and (max-width: ${mobileModeWidth}) and (max-width: ${tabletModeWidth}) {
+    width: 100%;
+  }
 `;
 
 const Tap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 15px;
+  width: 50%;
+  padding: 10px;
   border: solid 1px ${({ theme }) => theme.Main.labelMilestoneTap.border};
   font-size: ${({ theme }) => theme.fontSize.regular};
   cursor: pointer;
@@ -44,18 +53,35 @@ const Tap = styled.div`
     margin: 0 6px 0 0;
   }
   ${(props) => {
-    if (props.label) {
+    if (props.labels) {
       return css`
         border-right: none;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
       `;
     }
-    if (props.milestone) {
+    if (props.milestones) {
       return css`
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
       `;
     }
   }};
+  @media only screen and (max-width: ${mobileModeWidth}) {
+    font-size: ${({ theme }) => theme.fontSize.base};
+    img {
+      display: none;
+    }
+  }
+`;
+
+const TapNumber = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  border-radius: 15px;
+  background: ${({ theme }) => theme.Main.labelMilestoneTap.tapNumber};
+  padding: 5px;
+  margin: 0 0 0 6px;
 `;

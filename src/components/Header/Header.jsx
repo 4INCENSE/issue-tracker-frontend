@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
+import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
+
 import logo from '@/image/logo/serviceLogo/logo_w.png';
 import profile from '@/image/profile.jpg';
 
@@ -10,14 +12,14 @@ const Header = () => {
       <HeaderContent>
         <Logo src={logo} />
         <Line></Line>
-        <User>
+        <UserWrap>
           <Profile src={profile} />
           <UserMenuWrap>
             <Triangle></Triangle>
             <UserMenu>설정</UserMenu>
             <UserMenu>로그아웃</UserMenu>
           </UserMenuWrap>
-        </User>
+        </UserWrap>
       </HeaderContent>
     </Wrap>
   );
@@ -39,7 +41,10 @@ const HeaderContent = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 50px;
+  padding: 0 30px;
+  @media only screen and (max-width: ${mobileModeWidth}) and (max-width: ${tabletModeWidth}) {
+    padding: 0 10px;
+  }
 `;
 
 const Logo = styled.img`
@@ -76,9 +81,13 @@ const UserMenuWrap = styled.div`
   width: 150px;
   background: white;
   border: solid 2px #e2dfdf;
+  z-index: 10;
+  @media only screen and (max-width: ${mobileModeWidth}) and (max-width: ${tabletModeWidth}) {
+    width: 30vw;
+  }
 `;
 
-const User = styled.div`
+const UserWrap = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
@@ -103,6 +112,9 @@ const UserMenu = styled.div`
   border: black;
   &:hover {
     background: ${({ theme }) => theme.header.menuHover};
-    color: white;
+  }
+  @media only screen and (max-width: ${mobileModeWidth}) and (max-width: ${tabletModeWidth}) {
+    font-size: ${({ theme }) => theme.fontSize.small};
+    height: 40px;
   }
 `;
