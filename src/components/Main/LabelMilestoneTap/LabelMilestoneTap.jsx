@@ -39,7 +39,6 @@ const Tap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
   padding: 10px;
   border: solid 1px ${({ theme }) => theme.Main.labelMilestoneTap.border};
   font-size: ${({ theme }) => theme.fontSize.regular};
@@ -55,6 +54,7 @@ const Tap = styled.div`
   ${(props) => {
     if (props.labels) {
       return css`
+        width: 45%;
         border-right: none;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
@@ -62,6 +62,7 @@ const Tap = styled.div`
     }
     if (props.milestones) {
       return css`
+        width: 55%;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
       `;
