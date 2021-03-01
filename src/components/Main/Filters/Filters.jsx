@@ -26,7 +26,6 @@ export default Filters;
 
 const FilterButtonWrap = styled.div`
   display: flex;
-  width: 100%;
   justify-content: center;
   align-items: center;
 `;
@@ -41,7 +40,7 @@ const FilterMenuWrap = styled.div`
   align-items: center;
   width: 300px;
   background: white;
-  border: solid 1px ${({ theme }) => theme.filter.border};
+  border: solid 1px ${({ theme }) => theme.Main.filter.border};
   border-radius: 3px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
 `;
@@ -50,19 +49,19 @@ const FilterMenu = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  border-top: solid 1px ${({ theme }) => theme.filter.border};
+  border-top: solid 1px ${({ theme }) => theme.Main.filter.border};
   padding: 10px;
   &:hover {
-    background: ${({ theme }) => theme.filter.buttonHover};
+    background: ${({ theme }) => theme.Main.filter.buttonHover};
   }
   ${(props) => {
     if (props.first) {
       return css`
         border-top: none;
-        background: ${({ theme }) => theme.filter.buttonBackground};
+        background: ${({ theme }) => theme.Main.filter.buttonBackground};
         font-weight: bold;
         &:hover {
-          background: ${({ theme }) => theme.filter.buttonBackground};
+          background: ${({ theme }) => theme.Main.filter.buttonBackground};
         }
       `;
     }
@@ -76,8 +75,8 @@ const FilterButton = styled.button`
   align-items: center;
   width: 80px;
   height: 40px;
-  background: ${({ theme }) => theme.filter.buttonBackground};
-  border: solid 1px ${({ theme }) => theme.filter.border};
+  background: ${({ theme }) => theme.Main.filter.buttonBackground};
+  border: solid 1px ${({ theme }) => theme.Main.filter.border};
   border-right: none;
   border-radius: 5px 0 0 5px;
   padding: 10px;
@@ -88,7 +87,7 @@ const FilterButton = styled.button`
   }
   &:hover {
     box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.2) inset;
-    background: ${({ theme }) => theme.filter.buttonHover};
+    background: ${({ theme }) => theme.Main.filter.buttonHover};
   }
   &:hover ${FilterMenuWrap} {
     display: flex;
@@ -106,12 +105,12 @@ const FilterList = styled.input`
   background-position: 8px center;
   background-size: 15px;
   background-repeat: no-repeat;
-  border: solid 1px ${({ theme }) => theme.filter.border};
+  border: solid 1px ${({ theme }) => theme.Main.filter.border};
   border-radius: 0 5px 5px 0;
   padding: 10px 10px 10px 30px;
   z-index: 1;
   &:focus {
     outline: 0;
-    box-shadow: 0 0 3px 2px ${({ theme }) => theme.filter.inputHover};
+    box-shadow: 0 0 3px 2px ${({ theme }) => theme.Main.filter.inputHover};
   }
 `;

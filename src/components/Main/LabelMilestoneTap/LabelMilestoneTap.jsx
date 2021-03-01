@@ -32,11 +32,11 @@ const Tap = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px 15px;
-  border: solid 1px ${({ theme }) => theme.LabelMilestoneTap.border};
+  border: solid 1px ${({ theme }) => theme.Main.labelMilestoneTap.border};
   font-size: ${({ theme }) => theme.fontSize.regular};
   cursor: pointer;
   &:hover {
-    background: ${({ theme }) => theme.LabelMilestoneTap.hover};
+    background: ${({ theme }) => theme.Main.labelMilestoneTap.hover};
   }
   img {
     width: 18px;
