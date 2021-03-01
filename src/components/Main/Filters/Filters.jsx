@@ -26,8 +26,8 @@ export default Filters;
 
 const FilterButtonWrap = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  width: 50%;
 `;
 
 const FilterMenuWrap = styled.div`
@@ -98,8 +98,7 @@ const FilterList = styled.input`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  max-width: 100%;
+  width: 100%;
   height: 40px;
   background-image: url('src/image/icon/loupe.svg');
   background-position: 8px center;

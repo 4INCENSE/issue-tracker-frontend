@@ -7,11 +7,11 @@ import milestone from '@/image/icon/milestone.svg';
 const LabelMilestoneTap = () => {
   return (
     <Wrap>
-      <Tap label>
+      <Tap labels>
         <img src={tag} />
         Labels
       </Tap>
-      <Tap milestone>
+      <Tap milestones>
         <img src={milestone} />
         Milestones
       </Tap>
@@ -44,17 +44,19 @@ const Tap = styled.div`
     margin: 0 6px 0 0;
   }
   ${(props) => {
-    if (props.label) {
+    if (props.labels) {
       return css`
         border-right: none;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
+        min-width: 105px;
       `;
     }
-    if (props.milestone) {
+    if (props.milestones) {
       return css`
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
+        min-width: 130px;
       `;
     }
   }};

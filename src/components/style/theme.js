@@ -20,7 +20,7 @@ const color = {
 
 const header = {
   background: color.themeWine,
-  menuHover: color.themeBlue
+  menuHover: color.themeLightWine
 };
 
 const Main = {
