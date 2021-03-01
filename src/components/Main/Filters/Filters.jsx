@@ -100,6 +100,7 @@ const FilterList = styled.input`
   justify-content: center;
   align-items: center;
   width: 400px;
+  max-width: 100%;
   height: 40px;
   background-image: url('src/image/icon/loupe.svg');
   background-position: 8px center;
