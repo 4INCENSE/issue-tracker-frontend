@@ -10,8 +10,9 @@ const fontSize = {
 
 const color = {
   themeWine: '#35282d',
-  themeLightWine: '#3E3138',
-  themeBlue: '#5d91ef',
+  themeLightWine: '#b9a5b0',
+  themeBlue: '#3B7AE4',
+  themeDarkBlue: '#416bb4',
   themeSuperLightIvory: '#f3f1e9',
   themeLightIvory: '#e2e0d6',
   themeIvory: '#c4c2b9'
@@ -32,6 +33,10 @@ const Main = {
   labelMilestoneTap: {
     border: color.themeIvory,
     hover: color.themeLightIvory
+  },
+  newIssueButton: {
+    background: color.themeBlue,
+    hover: color.themeDarkBlue
   }
 };
 
