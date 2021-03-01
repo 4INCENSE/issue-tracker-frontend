@@ -22,11 +22,17 @@ const header = {
   menuHover: color.themeBlue
 };
 
-const filter = {
-  buttonBackground: color.themeLightIvory,
-  inputHover: color.themeLightWine,
-  border: color.themeIvory,
-  buttonHover: color.themeSuperLightIvory
+const Main = {
+  filter: {
+    buttonBackground: color.themeLightIvory,
+    inputHover: color.themeLightWine,
+    border: color.themeIvory,
+    buttonHover: color.themeSuperLightIvory
+  },
+  labelMilestoneTap: {
+    border: color.themeIvory,
+    hover: color.themeLightIvory
+  }
 };
 
-export default { fontSize, color, header, filter };
+export default { fontSize, color, header, Main };
