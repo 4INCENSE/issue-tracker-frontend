@@ -2,7 +2,7 @@ const fontSize = {
   micro: '8px',
   small: '12px',
   base: '14px',
-  ragular: '16px',
+  regular: '16px',
   large: '20px',
   xLarge: '24px',
   title: '32px'
@@ -10,9 +10,11 @@ const fontSize = {
 
 const color = {
   themeWine: '#35282d',
+  themeLightWine: '#3E3138',
   themeBlue: '#5d91ef',
-  themeLightGray: '#e2e1dd',
-  themeGray: '#d1d0cc'
+  themeSuperLightIvory: '#f3f1e9',
+  themeLightIvory: '#e2e0d6',
+  themeIvory: '#c4c2b9'
 };
 
 const header = {
@@ -21,9 +23,10 @@ const header = {
 };
 
 const filter = {
-  buttonBackground: color.themeLightGray,
-  inputHover: color.themeBlue,
-  border: color.themeGray
+  buttonBackground: color.themeLightIvory,
+  inputHover: color.themeLightWine,
+  border: color.themeIvory,
+  buttonHover: color.themeSuperLightIvory
 };
 
 export default { fontSize, color, header, filter };
