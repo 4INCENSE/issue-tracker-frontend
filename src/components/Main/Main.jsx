@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
+import { mobileModeWidth, responsiveHeight, tabletModeWidth } from '@/common/constants/responsiveSize';
+
 import Wrap from '@/components/UI/Layout/Wrap';
 import Header from '@/components/Header/Header';
 import FIlters from '@/components/Main/Filters/Filters';
@@ -13,7 +15,9 @@ const Main = () => {
       <Header />
       <Wrap>
         <HeadWrap>
-          <FIlters />
+          <FiltersWrap>
+            <FIlters />
+          </FiltersWrap>
           <TapButtonWrap>
             <LabelMilestoneTap />
             <NewIssueButton />
@@ -31,12 +35,26 @@ const HeadWrap = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  @media only screen and (max-width: ${tabletModeWidth}) {
+    flex-direction: column;
+  }
+`;
+
+const FiltersWrap = styled.div`
+  width: 50%;
+  @media only screen and (max-width: ${tabletModeWidth}) {
+    width: 100%;
+  }
 `;
 
 const TapButtonWrap = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  /* width: 400px; */
-  margin: 0 0 0 20px;
+  margin: 0px 0 0px 20px;
+  @media only screen and (max-width: ${tabletModeWidth}) {
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0;
+  }
 `;
