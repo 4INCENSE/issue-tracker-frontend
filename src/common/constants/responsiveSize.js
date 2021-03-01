@@ -1,3 +1,3 @@
-export const mobileModeWidth = `640px`;
+export const mobileModeWidth = `688px`;
 export const responsiveHeight = `750px`;
-export const tabletModeWidth = '1080px';
+export const tabletModeWidth = '992px';
