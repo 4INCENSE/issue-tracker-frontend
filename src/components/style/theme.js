@@ -12,6 +12,7 @@ const color = {
   themeWine: '#35282d',
   themeLightWine: '#b9a5b0',
   themeBlue: '#3B7AE4',
+  themeTransparentBlue: 'rgba(59, 121, 228, 0.719)',
   themeDarkBlue: '#416bb4',
   themeSuperLightIvory: '#f3f1e9',
   themeLightIvory: '#e2e0d6',
@@ -32,11 +33,13 @@ const Main = {
   },
   labelMilestoneTap: {
     border: color.themeIvory,
-    hover: color.themeLightIvory
+    hover: color.themeLightIvory,
+    tapNumber: color.themeIvory
   },
   newIssueButton: {
     background: color.themeBlue,
-    hover: color.themeDarkBlue
+    hover: color.themeDarkBlue,
+    mobileBackground: color.themeTransparentBlue
   }
 };
 
