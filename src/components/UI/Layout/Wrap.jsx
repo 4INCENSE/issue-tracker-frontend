@@ -8,7 +8,9 @@ const Wrap = ({ children }) => {
 export default Wrap;
 
 const WrapStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  max-width: 1000px;
-  margin: 50px auto;
+  padding: 5vh;
 `;
