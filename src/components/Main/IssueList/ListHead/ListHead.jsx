@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
+import { mobileModeWidth } from '@/common/constants/responsiveSize';
 
 import Checkbox from '@/components/UI/Checkbox/Checkbox';
 import FilterButton from '@/components/Main/IssueList/ListHead/FilterButton/FilterButton';

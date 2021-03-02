@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
+import { mobileModeWidth } from '@/common/constants/responsiveSize';
 
 import arrow from '@/image/icon/arrow-point-to-down.svg';
 
