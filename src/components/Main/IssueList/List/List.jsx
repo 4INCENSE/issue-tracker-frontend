@@ -13,12 +13,12 @@ import comment from '@/image/icon/comment.svg';
 const List = ({ isOpen }) => {
   return (
     <Wrap>
-      <TitleInformationWrap>
+      <ContentWrap>
         <CheckboxTitleLabelWrap>
           <CheckboxWrap>
             <Checkbox />
           </CheckboxWrap>
-          {isOpen ? <StateImg src={open} /> : <StateImg src={closed} />}
+          {isOpen ? <StateIcon src={open} /> : <StateIcon src={closed} />}
           <TitleLabelWrap>
             <Title>feat : 이슈리스트 반응형 UI 제작</Title>
             <LabelWrap>
@@ -35,7 +35,7 @@ const List = ({ isOpen }) => {
             week 1
           </Milestone>
         </InformationWrap>
-      </TitleInformationWrap>
+      </ContentWrap>
       <CommentsWrap>
         <img src={comment} /> 2
       </CommentsWrap>
@@ -61,7 +61,14 @@ const Wrap = styled.div`
     padding: 10px;
   }
 `;
-const StateImg = styled.img`
+
+const ContentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;
+
+const StateIcon = styled.img`
   width: 18px;
   margin: 0 10px;
   @media only screen and (max-width: ${mobileModeWidth}) {
@@ -118,12 +125,6 @@ const Label = styled.div`
     margin: 5px 0 0 5px;
     padding: 3px 5px;
   }
-`;
-
-const TitleInformationWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 `;
 
 const IssueNumber = styled.span``;
