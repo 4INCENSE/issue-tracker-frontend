@@ -36,7 +36,7 @@ const Button = styled.button`
 `;
 
 const MobileButton = styled.button`
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   display: none;
