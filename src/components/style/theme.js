@@ -41,7 +41,7 @@ const Main = {
     hover: color.themeDarkBlue,
     mobileBackground: color.themeTransparentBlue
   },
-  List: {
+  list: {
     border: color.themeIvory,
     background: color.themeSuperLightIvory,
     hover: color.themeSuperLightIvory

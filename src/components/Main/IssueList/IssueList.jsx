@@ -24,6 +24,6 @@ const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: solid 1px ${({ theme }) => theme.Main.List.border};
+  border: solid 1px ${({ theme }) => theme.Main.list.border};
   border-bottom: none;
 `;

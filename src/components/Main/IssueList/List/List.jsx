@@ -52,10 +52,10 @@ const Wrap = styled.div`
   width: 100%;
   min-width: 100%;
   min-height: 73px;
-  border-bottom: solid 1px ${({ theme }) => theme.Main.List.border};
+  border-bottom: solid 1px ${({ theme }) => theme.Main.list.border};
   padding: 15px;
   &:hover {
-    background: ${({ theme }) => theme.Main.List.hover};
+    background: ${({ theme }) => theme.Main.list.hover};
   }
   @media only screen and (max-width: ${mobileModeWidth}) {
     padding: 10px;

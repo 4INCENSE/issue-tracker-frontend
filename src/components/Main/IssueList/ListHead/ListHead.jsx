@@ -39,8 +39,8 @@ const Wrap = styled.div`
   align-items: center;
   width: 100%;
   height: 60px;
-  border-bottom: solid 1px ${({ theme }) => theme.Main.List.border};
-  background: ${({ theme }) => theme.Main.List.background};
+  border-bottom: solid 1px ${({ theme }) => theme.Main.list.border};
+  background: ${({ theme }) => theme.Main.list.background};
   padding: 15px;
   @media only screen and (max-width: ${mobileModeWidth}) {
     display: none;
