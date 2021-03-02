@@ -40,6 +40,11 @@ const Main = {
     background: color.themeBlue,
     hover: color.themeDarkBlue,
     mobileBackground: color.themeTransparentBlue
+  },
+  List: {
+    border: color.themeIvory,
+    background: color.themeSuperLightIvory,
+    hover: color.themeSuperLightIvory
   }
 };
 
