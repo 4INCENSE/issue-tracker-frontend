@@ -45,6 +45,9 @@ const Main = {
     border: color.themeIvory,
     background: color.themeSuperLightIvory,
     hover: color.themeSuperLightIvory
+  },
+  resetQueryButton: {
+    hover: color.themeDarkBlue
   }
 };
 
