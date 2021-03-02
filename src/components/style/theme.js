@@ -40,6 +40,14 @@ const Main = {
     background: color.themeBlue,
     hover: color.themeDarkBlue,
     mobileBackground: color.themeTransparentBlue
+  },
+  list: {
+    border: color.themeIvory,
+    background: color.themeSuperLightIvory,
+    hover: color.themeSuperLightIvory
+  },
+  resetQueryButton: {
+    hover: color.themeDarkBlue
   }
 };
 

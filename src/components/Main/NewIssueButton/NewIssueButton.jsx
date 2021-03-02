@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
 
@@ -18,6 +18,7 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 105px;
   border-radius: 5px;
   color: white;
   font-size: ${({ theme }) => theme.fontSize.regular};
@@ -35,7 +36,7 @@ const Button = styled.button`
 `;
 
 const MobileButton = styled.button`
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   display: none;

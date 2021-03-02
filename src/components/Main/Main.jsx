@@ -8,21 +8,27 @@ import Header from '@/components/Header/Header';
 import FIlters from '@/components/Main/Filters/Filters';
 import LabelMilestoneTap from '@/components/Main/LabelMilestoneTap/LabelMilestoneTap';
 import NewIssueButton from '@/components/Main/NewIssueButton/NewIssueButton';
+import ResetQueryButton from '@/components/Main/ResetQueryButton/ResetQueryButton';
+import IssueList from '@/components/Main/IssueList/IssueList';
 
 const Main = () => {
   return (
     <>
       <Header />
       <Wrap>
-        <HeadWrap>
-          <FiltersWrap>
-            <FIlters />
-          </FiltersWrap>
-          <TapButtonWrap>
-            <LabelMilestoneTap />
-            <NewIssueButton />
-          </TapButtonWrap>
-        </HeadWrap>
+        <MainContentWrap>
+          <HeadWrap>
+            <FiltersWrap>
+              <FIlters />
+            </FiltersWrap>
+            <TapButtonWrap>
+              <LabelMilestoneTap />
+              <NewIssueButton />
+            </TapButtonWrap>
+          </HeadWrap>
+          <ResetQueryButton />
+          <IssueList />
+        </MainContentWrap>
       </Wrap>
     </>
   );
@@ -30,9 +36,16 @@ const Main = () => {
 
 export default Main;
 
+const MainContentWrap = styled.div`
+  width: 70%;
+  @media only screen and (max-width: ${tabletModeWidth}) {
+    width: 100%;
+  }
+`;
+
 const HeadWrap = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   @media only screen and (max-width: ${tabletModeWidth}) {
@@ -41,7 +54,7 @@ const HeadWrap = styled.div`
 `;
 
 const FiltersWrap = styled.div`
-  width: 50%;
+  width: 100%;
   @media only screen and (max-width: ${tabletModeWidth}) {
     width: 100%;
   }
