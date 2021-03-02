@@ -8,6 +8,7 @@ import Header from '@/components/Header/Header';
 import FIlters from '@/components/Main/Filters/Filters';
 import LabelMilestoneTap from '@/components/Main/LabelMilestoneTap/LabelMilestoneTap';
 import NewIssueButton from '@/components/Main/NewIssueButton/NewIssueButton';
+import ResetQueryButton from '@/components/Main/ResetQueryButton/ResetQueryButton';
 import IssueList from '@/components/Main/IssueList/IssueList';
 
 const Main = () => {
@@ -25,6 +26,7 @@ const Main = () => {
               <NewIssueButton />
             </TapButtonWrap>
           </HeadWrap>
+          <ResetQueryButton />
           <IssueList />
         </MainContentWrap>
       </Wrap>
