@@ -45,6 +45,17 @@ const FilterButton = ({ title }) => {
 
 export default FilterButton;
 
+const ListPopupWrap = styled.div`
+  position: absolute;
+  top: 25px;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  min-width: 210px;
+  border: 1px solid ${({ theme }) => theme.Main.filterButton.border};
+  border-radius: 5px;
+  background: white;
+`;
 const Wrap = styled.div`
   position: relative;
   display: flex;
@@ -54,18 +65,9 @@ const Wrap = styled.div`
     margin: 0 0 0 5px;
     width: 12px;
   }
-`;
-
-const ListPopupWrap = styled.div`
-  position: absolute;
-  top: 25px;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 210px;
-  border: 1px solid ${({ theme }) => theme.Main.filterButton.border};
-  border-radius: 5px;
-  background: white;
+  &:hover ${ListPopupWrap} {
+    display: flex;
+  }
 `;
 
 const ListPopupMenu = styled.div`
