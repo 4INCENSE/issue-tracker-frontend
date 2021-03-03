@@ -26,7 +26,7 @@ const header = {
 
 const Main = {
   filter: {
-    buttonBackground: color.themeLightIvory,
+    buttonBackground: color.themeSuperLightIvory,
     inputHover: color.themeLightWine,
     border: color.themeIvory,
     buttonHover: color.themeSuperLightIvory
@@ -40,6 +40,9 @@ const Main = {
     background: color.themeBlue,
     hover: color.themeDarkBlue,
     mobileBackground: color.themeTransparentBlue
+  },
+  filterButton: {
+    border: color.themeIvory
   },
   list: {
     border: color.themeIvory,
