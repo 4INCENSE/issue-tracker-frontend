@@ -3,15 +3,19 @@ import styled from 'styled-components';
 
 import check from '@/image/icon/check.svg';
 
-const Checkbox = ({ checked }) => {
+const Checkbox = ({ checked, id }) => {
   const [isChecked, setIsChecked] = useState(checked);
+
+  const checkboxClickHandler = () => {
+    setIsChecked(!isChecked);
+  };
 
   return (
     <>
       {isChecked ? (
-        <CheckImg src={check} onClick={() => setIsChecked(false)} />
+        <CheckImg src={check} onClick={checkboxClickHandler} />
       ) : (
-        <Wrap onClick={() => setIsChecked(true)}></Wrap>
+        <Wrap onClick={checkboxClickHandler}></Wrap>
       )}
     </>
   );
