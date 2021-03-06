@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
 
 import Checkbox from '@/components/UI/Checkbox/Checkbox';
+import Label from '@/components/Main/IssueList/List/Label/Label';
 
 import open from '@/image/icon/open.svg';
 import closed from '@/image/icon/closed.svg';
@@ -24,8 +25,17 @@ const List = ({
           <TitleLabelWrap>
             <Title>{title}</Title>
             <LabelWrap>
-              <Label>feature</Label>
-              <Label>UI</Label>
+              {labels.map((labels, index) => {
+                return (
+                  <Label
+                    key={index}
+                    id={labels.id}
+                    title={labels.title}
+                    textColor={labels.textColor}
+                    backgroundColor={labels.backgroundColor}
+                  />
+                );
+              })}
             </LabelWrap>
           </TitleLabelWrap>
         </CheckboxTitleLabelWrap>
@@ -121,23 +131,6 @@ const Title = styled.div`
 
 const LabelWrap = styled.div`
   display: flex;
-`;
-
-const Label = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #67aac9;
-  border-radius: 10px;
-  font-size: ${({ theme }) => theme.fontSize.small};
-  font-weight: bold;
-  padding: 4px 10px 4px 10px;
-  margin: -3px 0 0 10px;
-  cursor: pointer;
-  @media only screen and (max-width: ${mobileModeWidth}) {
-    margin: 5px 0 0 5px;
-    padding: 3px 5px;
-  }
 `;
 
 const IssueNumber = styled.span``;
