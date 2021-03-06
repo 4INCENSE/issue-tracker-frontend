@@ -10,7 +10,9 @@ import closed from '@/image/icon/closed.svg';
 import milestone from '@/image/icon/milestone_s.svg';
 import comment from '@/image/icon/comment.svg';
 
-const List = ({ isOpen }) => {
+const List = ({
+  data: { id, title, isOpened, date, writerName, writerImage, milestoneTitle, commentCount, labels }
+}) => {
   return (
     <Wrap>
       <ContentWrap>
@@ -18,9 +20,9 @@ const List = ({ isOpen }) => {
           <CheckboxWrap>
             <Checkbox />
           </CheckboxWrap>
-          {isOpen ? <StateIcon src={open} /> : <StateIcon src={closed} />}
+          {isOpened == 'y' ? <StateIcon src={open} /> : <StateIcon src={closed} />}
           <TitleLabelWrap>
-            <Title>feat : 이슈리스트 반응형 UI 제작</Title>
+            <Title>{title}</Title>
             <LabelWrap>
               <Label>feature</Label>
               <Label>UI</Label>
@@ -28,17 +30,28 @@ const List = ({ isOpen }) => {
           </TitleLabelWrap>
         </CheckboxTitleLabelWrap>
         <InformationWrap>
-          <IssueNumber>#1</IssueNumber>
-          <Information>opened 9 days ago by hyewon3938</Information>
-          <Milestone>
-            <img src={milestone} />
-            week 1
-          </Milestone>
+          <IssueNumber>#{id}</IssueNumber>
+          <Information>
+            opened {date} by {writerName}
+          </Information>
+          {milestoneTitle == '' ? (
+            ''
+          ) : (
+            <Milestone>
+              <img src={milestone} />
+              {milestoneTitle}
+            </Milestone>
+          )}
         </InformationWrap>
       </ContentWrap>
-      <CommentsWrap>
-        <img src={comment} /> 2
-      </CommentsWrap>
+      {commentCount <= 0 ? (
+        ''
+      ) : (
+        <CommentsWrap>
+          <img src={comment} />
+          {commentCount}
+        </CommentsWrap>
+      )}
     </Wrap>
   );
 };
@@ -171,5 +184,8 @@ const CommentsWrap = styled.div`
   img {
     width: 13px;
     margin: 0 5px 0 10px;
+  }
+  @media only screen and (max-width: ${mobileModeWidth}) {
+    display: none;
   }
 `;
