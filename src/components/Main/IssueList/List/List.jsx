@@ -4,13 +4,16 @@ import styled, { css } from 'styled-components';
 import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
 
 import Checkbox from '@/components/UI/Checkbox/Checkbox';
+import Label from '@/components/Main/IssueList/List/Label/Label';
 
 import open from '@/image/icon/open.svg';
 import closed from '@/image/icon/closed.svg';
 import milestone from '@/image/icon/milestone_s.svg';
 import comment from '@/image/icon/comment.svg';
 
-const List = ({ isOpen }) => {
+const List = ({
+  data: { id, title, isOpened, date, writerName, writerImage, milestoneTitle, commentCount, labels }
+}) => {
   return (
     <Wrap>
       <ContentWrap>
@@ -18,27 +21,47 @@ const List = ({ isOpen }) => {
           <CheckboxWrap>
             <Checkbox />
           </CheckboxWrap>
-          {isOpen ? <StateIcon src={open} /> : <StateIcon src={closed} />}
+          {isOpened == 'y' ? <StateIcon src={open} /> : <StateIcon src={closed} />}
           <TitleLabelWrap>
-            <Title>feat : 이슈리스트 반응형 UI 제작</Title>
+            <Title>{title}</Title>
             <LabelWrap>
-              <Label>feature</Label>
-              <Label>UI</Label>
+              {labels.map((labels, index) => {
+                return (
+                  <Label
+                    key={index}
+                    id={labels.id}
+                    title={labels.title}
+                    textColor={labels.textColor}
+                    backgroundColor={labels.backgroundColor}
+                  />
+                );
+              })}
             </LabelWrap>
           </TitleLabelWrap>
         </CheckboxTitleLabelWrap>
         <InformationWrap>
-          <IssueNumber>#1</IssueNumber>
-          <Information>opened 9 days ago by hyewon3938</Information>
-          <Milestone>
-            <img src={milestone} />
-            week 1
-          </Milestone>
+          <IssueNumber>#{id}</IssueNumber>
+          <Information>
+            opened {date} by {writerName}
+          </Information>
+          {milestoneTitle == '' ? (
+            ''
+          ) : (
+            <Milestone>
+              <img src={milestone} />
+              {milestoneTitle}
+            </Milestone>
+          )}
         </InformationWrap>
       </ContentWrap>
-      <CommentsWrap>
-        <img src={comment} /> 2
-      </CommentsWrap>
+      {commentCount <= 0 ? (
+        ''
+      ) : (
+        <CommentsWrap>
+          <img src={comment} />
+          {commentCount}
+        </CommentsWrap>
+      )}
     </Wrap>
   );
 };
@@ -110,23 +133,6 @@ const LabelWrap = styled.div`
   display: flex;
 `;
 
-const Label = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #67aac9;
-  border-radius: 10px;
-  font-size: ${({ theme }) => theme.fontSize.small};
-  font-weight: bold;
-  padding: 4px 10px 4px 10px;
-  margin: -3px 0 0 10px;
-  cursor: pointer;
-  @media only screen and (max-width: ${mobileModeWidth}) {
-    margin: 5px 0 0 5px;
-    padding: 3px 5px;
-  }
-`;
-
 const IssueNumber = styled.span``;
 
 const Information = styled.span`
@@ -171,5 +177,8 @@ const CommentsWrap = styled.div`
   img {
     width: 13px;
     margin: 0 5px 0 10px;
+  }
+  @media only screen and (max-width: ${mobileModeWidth}) {
+    display: none;
   }
 `;

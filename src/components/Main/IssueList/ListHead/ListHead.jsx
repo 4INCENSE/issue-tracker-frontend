@@ -9,11 +9,15 @@ import FilterButton from '@/components/Main/IssueList/ListHead/FilterButton/Filt
 const ListHead = () => {
   const [isChecked, setIsChecked] = useState(false);
 
+  const onCheckboxClickHandler = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <Wrap>
-      <SelectInfoWrap>
+      <SelectInfoWrap onClick={onCheckboxClickHandler}>
         <Checkbox />
-        <span>1 selected</span>
+        {isChecked ? <span>1 selected</span> : ''}
       </SelectInfoWrap>
       {isChecked ? (
         <FilterButtonWrap>

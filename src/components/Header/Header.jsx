@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
@@ -7,18 +7,35 @@ import logo from '@/image/logo/serviceLogo/logo_w.png';
 import profile from '@/image/profile.jpg';
 
 const Header = () => {
+  const [showLogoutButton, setShowLogoutButton] = useState(false);
+
+  const profileClickHandler = () => {
+    setShowLogoutButton(!showLogoutButton);
+  };
+
+  const logoutButtonCancelClickHandler = () => {
+    setShowLogoutButton(false);
+  };
+
+  const logoutButtonClickHandler = () => {
+    console.log('로그아웃되었습니다');
+    window.history.back();
+  };
+
   return (
     <Wrap>
       <HeaderContent>
         <Logo src={logo} />
         <Line></Line>
-        <UserWrap>
+        <UserWrap onClick={profileClickHandler}>
           <Profile src={profile} />
-          <UserMenuWrap>
-            <Triangle></Triangle>
-            <UserMenu>설정</UserMenu>
-            <UserMenu>로그아웃</UserMenu>
-          </UserMenuWrap>
+          {showLogoutButton ? (
+            <LogoutButtonCancelWrap onClick={logoutButtonCancelClickHandler}>
+              <LogoutButton onClick={logoutButtonClickHandler}>로그아웃</LogoutButton>
+            </LogoutButtonCancelWrap>
+          ) : (
+            ''
+          )}
         </UserWrap>
       </HeaderContent>
     </Wrap>
@@ -42,6 +59,7 @@ const HeaderContent = styled.div`
   align-items: center;
   width: 100%;
   padding: 0 30px;
+
   @media only screen and (max-width: ${mobileModeWidth}) and (max-width: ${tabletModeWidth}) {
     padding: 0 10px;
   }
@@ -59,43 +77,31 @@ const Line = styled.div`
   margin: auto 20px;
 `;
 
-const Triangle = styled.div`
+const LogoutButton = styled.button`
   position: absolute;
-  top: -8px;
-  right: 10px;
-  width: 0px;
-  height: 0px;
-  border-bottom: 7px solid white;
-  border-right: 7px solid transparent;
-  border-left: 7px solid transparent;
-`;
-
-const UserMenuWrap = styled.div`
-  position: absolute;
-  top: 55px;
-  right: 0;
-  display: none;
-  flex-direction: column;
+  top: 70px;
+  right: 15px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
+  width: 100px;
+  height: 50px;
   background: white;
-  border: solid 2px #e2dfdf;
-  z-index: 10;
-  @media only screen and (max-width: ${mobileModeWidth}) and (max-width: ${tabletModeWidth}) {
-    width: 30vw;
+  border: solid 1px black;
+  font-size: ${({ theme }) => theme.fontSize.small};
+  z-index: 5;
+  cursor: pointer;
+  &:hover {
+    background: ${({ theme }) => theme.header.menuHover};
+    color: white;
   }
 `;
 
 const UserWrap = styled.div`
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  &:hover ${UserMenuWrap} {
-    display: flex;
-  }
 `;
 
 const Profile = styled.img`
@@ -103,18 +109,10 @@ const Profile = styled.img`
   border-radius: 10px;
 `;
 
-const UserMenu = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 50px;
-  border: black;
-  &:hover {
-    background: ${({ theme }) => theme.header.menuHover};
-  }
-  @media only screen and (max-width: ${mobileModeWidth}) and (max-width: ${tabletModeWidth}) {
-    font-size: ${({ theme }) => theme.fontSize.small};
-    height: 40px;
-  }
+const LogoutButtonCancelWrap = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 `;
