@@ -1,0 +1,1 @@
+export const SET_CHECKED_LIST = 'SET_CHECKED_LIST';
