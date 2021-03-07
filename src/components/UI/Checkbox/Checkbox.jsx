@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { useDispatch } from 'react-redux';
+
+import { addCheckedList, deleteCheckedList } from '@/redux/Main/actions/checkboxAction';
+
 import check from '@/image/icon/check.svg';
 
 const Checkbox = ({ checked, id }) => {
+  const dispatch = useDispatch();
+
   const [isChecked, setIsChecked] = useState(checked);
 
   const checkboxClickHandler = () => {
     setIsChecked(!isChecked);
+    isChecked ? dispatch(deleteCheckedList(id)) : dispatch(addCheckedList(id));
   };
 
   return (

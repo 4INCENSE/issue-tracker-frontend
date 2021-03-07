@@ -19,7 +19,7 @@ const List = ({
       <ContentWrap>
         <CheckboxTitleLabelWrap>
           <CheckboxWrap>
-            <Checkbox />
+            <Checkbox id={id} />
           </CheckboxWrap>
           {isOpened == 'y' ? <StateIcon src={open} /> : <StateIcon src={closed} />}
           <TitleLabelWrap>
