@@ -1,4 +1,4 @@
-import { SET_CHECKED_LIST } from '@/redux/Main/type/issueListType';
+import { SET_CHECKED_LIST, SET_IS_ALL_CHECKED } from '@/redux/Main/type/issueListType';
 
 const addCheckedList = (payload) => (dispatch, getState) => {
   const addedCheckedList = addCheckedListToArray(getState, payload);
@@ -7,8 +7,9 @@ const addCheckedList = (payload) => (dispatch, getState) => {
 
 const addCheckedListToArray = (getState, payload) => {
   const { checkedList } = getState().checkboxReducer;
-  checkedList.push(payload);
-  const addedCheckedList = checkedList.sort();
+  if (payload != null) checkedList.push(payload);
+  const set = new Set(checkedList);
+  const addedCheckedList = [...set].sort();
   return addedCheckedList;
 };
 
@@ -30,4 +31,11 @@ const setCheckedList = (payload) => {
   };
 };
 
-export { addCheckedList, deleteCheckedList };
+const setIsAllChecked = (payload) => {
+  return {
+    type: SET_IS_ALL_CHECKED,
+    payload
+  };
+};
+
+export { addCheckedList, deleteCheckedList, setIsAllChecked };

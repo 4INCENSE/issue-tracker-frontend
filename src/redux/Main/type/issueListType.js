@@ -1,1 +1,3 @@
 export const SET_CHECKED_LIST = 'SET_CHECKED_LIST';
+
+export const SET_IS_ALL_CHECKED = 'SET_IS_ALL_CHECKED';

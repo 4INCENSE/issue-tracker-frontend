@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
@@ -12,14 +12,15 @@ import milestone from '@/image/icon/milestone_s.svg';
 import comment from '@/image/icon/comment.svg';
 
 const List = ({
-  data: { id, title, isOpened, date, writerName, writerImage, milestoneTitle, commentCount, labels }
+  data: { id, title, isOpened, date, writerName, writerImage, milestoneTitle, commentCount, labels },
+  allChecked
 }) => {
   return (
     <Wrap>
       <ContentWrap>
         <CheckboxTitleLabelWrap>
           <CheckboxWrap>
-            <Checkbox id={id} />
+            <Checkbox id={id} checked={allChecked} />
           </CheckboxWrap>
           {isOpened == 'y' ? <StateIcon src={open} /> : <StateIcon src={closed} />}
           <TitleLabelWrap>

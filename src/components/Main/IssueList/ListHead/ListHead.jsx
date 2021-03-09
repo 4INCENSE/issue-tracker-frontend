@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+
+import { setIsAllChecked } from '@/redux/Main/actions/checkboxAction';
 
 import { mobileModeWidth } from '@/common/constants/responsiveSize';
 
@@ -7,10 +10,13 @@ import Checkbox from '@/components/UI/Checkbox/Checkbox';
 import FilterButton from '@/components/Main/IssueList/ListHead/FilterButton/FilterButton';
 
 const ListHead = () => {
+  const dispatch = useDispatch();
+
   const [isChecked, setIsChecked] = useState(false);
 
   const onCheckboxClickHandler = () => {
     setIsChecked(!isChecked);
+    dispatch(setIsAllChecked(!isChecked));
   };
 
   return (
