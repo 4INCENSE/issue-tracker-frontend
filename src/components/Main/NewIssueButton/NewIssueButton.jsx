@@ -1,13 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
 
 const NewIssueButton = () => {
+  const history = useHistory();
+
+  const newIssueButtonClickHandler = () => {
+    history.push('/newIssue');
+  };
+
   return (
     <>
-      <Button>New issue</Button>
-      <MobileButton>+</MobileButton>
+      <Button onClick={newIssueButtonClickHandler}>New issue</Button>
+      <MobileButton onClick={newIssueButtonClickHandler}>+</MobileButton>
     </>
   );
 };
