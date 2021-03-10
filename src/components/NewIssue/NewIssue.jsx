@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { mobileModeWidth, responsiveHeight, tabletModeWidth } from '@/common/constants/responsiveSize';
 
 import Wrap from '@/components/UI/Layout/Wrap';
+import BlueButton from '@/components/UI/Button/BlueButton';
 
 import profile from '@/image/profile.jpg';
 
@@ -25,11 +26,15 @@ const NewIssue = () => {
           </CommentImageButtonWrap>
           <CancelSubmitButtonWrap>
             <CancelButton>Cancel</CancelButton>
-            <SubmitButton>Submit new issue</SubmitButton>
+            <SubmitButtonWrap>
+              <BlueButton title="Submit new issue" />
+            </SubmitButtonWrap>
           </CancelSubmitButtonWrap>
         </IssueContentWrap>
         <SidebarWrap></SidebarWrap>
-        <MobileSubmitButton>Submit new issue</MobileSubmitButton>
+        <MobileSubmitButtonWrap>
+          <BlueButton title="Submit new issue" />
+        </MobileSubmitButtonWrap>
       </NewIssueContentWrap>
     </Wrap>
   );
@@ -190,38 +195,20 @@ const CancelButton = styled.button`
   cursor: pointer;
 `;
 
-const SubmitButton = styled.button`
-  border-radius: 5px;
-  color: white;
+const SubmitButtonWrap = styled.div`
   font-size: ${({ theme }) => theme.fontSize.small};
   font-weight: bold;
-  padding: 10px 15px;
   margin: 0 0 0 10px;
-  background: ${({ theme }) => theme.NewIssue.submitButton.background};
-  cursor: pointer;
-  &:hover {
-    background: ${({ theme }) => theme.NewIssue.submitButton.hover};
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2) inset;
-  }
 `;
 
-const MobileSubmitButton = styled.button`
+const MobileSubmitButtonWrap = styled.div`
   display: none;
   width: 95%;
-  border-radius: 5px;
-  color: white;
-  font-size: ${({ theme }) => theme.fontSize.small};
-  font-weight: bold;
-  padding: 10px 15px;
   margin: 20px 0 30px 0;
-  background: ${({ theme }) => theme.NewIssue.submitButton.background};
-  cursor: pointer;
-  &:hover {
-    background: ${({ theme }) => theme.NewIssue.submitButton.hover};
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2) inset;
-  }
   @media only screen and (max-width: ${mobileModeWidth}) {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
