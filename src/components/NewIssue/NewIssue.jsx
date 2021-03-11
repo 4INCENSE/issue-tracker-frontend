@@ -27,7 +27,7 @@ const NewIssue = () => {
           <CancelSubmitButtonWrap>
             <CancelButton>Cancel</CancelButton>
             <SubmitButtonWrap>
-              <BlueButton title="Submit new issue" />
+              <BlueButton size="small" title="Submit new issue" />
             </SubmitButtonWrap>
           </CancelSubmitButtonWrap>
         </IssueContentWrap>
