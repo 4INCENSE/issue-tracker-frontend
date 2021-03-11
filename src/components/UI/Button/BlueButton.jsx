@@ -1,8 +1,18 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const BlueButton = ({ title, onClick }) => {
-  return <Button onClick={onClick}>{title}</Button>;
+const BlueButton = ({ title, onClick, size }) => {
+  return (
+    <>
+      {size === 'small' ? (
+        <Button small onClick={onClick}>
+          {title}
+        </Button>
+      ) : (
+        <Button onClick={onClick}>{title}</Button>
+      )}
+    </>
+  );
 };
 
 export default BlueButton;
