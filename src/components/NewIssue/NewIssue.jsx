@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { mobileModeWidth, responsiveHeight, tabletModeWidth } from '@/common/constants/responsiveSize';
@@ -9,6 +9,20 @@ import BlueButton from '@/components/UI/Button/BlueButton';
 import profile from '@/image/profile.jpg';
 
 const NewIssue = () => {
+  const [currentLength, setCurrentLength] = useState();
+
+  const uploadImage = (e) => {
+    const currentFile = e.target.files[0];
+    console.log(currentFile);
+  };
+
+  const contentLength = (e) => {
+    const currentLength = e.target.value.length;
+    setCurrentLength(currentLength);
+  };
+
+  console.log(currentLength);
+
   return (
     <Wrap>
       <NewIssueContentWrap>
@@ -21,8 +35,9 @@ const NewIssue = () => {
           </CommentWrap>
           <CommentImageButtonWrap>
             <ContentLength>0 characters</ContentLength>
-            <CommentTextarea placeholder="Leave a comment"></CommentTextarea>
-            <ImageAttachButton>Attach files by selecting here</ImageAttachButton>
+            <CommentTextarea placeholder="Leave a comment" onChange={contentLength}></CommentTextarea>
+            <ImageAttachButton htmlFor="file">Attach files by selecting here</ImageAttachButton>
+            <Input id="file" type="file" accept=".jpg, .jpeg, .png" onChange={uploadImage} />
           </CommentImageButtonWrap>
           <CancelSubmitButtonWrap>
             <CancelButton>Cancel</CancelButton>
@@ -52,6 +67,7 @@ const NewIssueContentWrap = styled.div`
     margin: 20px 0 0 0;
   }
   @media only screen and (max-width: ${mobileModeWidth}) {
+    align-items: center;
     flex-direction: column;
   }
 `;
@@ -165,7 +181,7 @@ const CommentTextarea = styled.textarea`
   }
 `;
 
-const ImageAttachButton = styled.button`
+const ImageAttachButton = styled.label`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -178,6 +194,12 @@ const ImageAttachButton = styled.button`
   border-radius: 0 0 5px 5px;
   padding: 0 10px;
   cursor: pointer;
+`;
+
+const Input = styled.input`
+  position: absolute;
+  width: 0;
+  height: 0;
 `;
 
 const CancelSubmitButtonWrap = styled.div`
