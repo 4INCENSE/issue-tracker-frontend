@@ -16,12 +16,21 @@ const NewIssue = () => {
     console.log(currentFile);
   };
 
-  const contentLength = (e) => {
-    const currentLength = e.target.value.length;
-    setCurrentLength(currentLength);
-  };
+  let debounceCheck = null;
 
-  console.log(currentLength);
+  const contentLength = (e) => {
+    const currentValueLength = e.target.value.length;
+
+    if (debounceCheck) {
+      clearTimeout(debounceCheck);
+    }
+    debounceCheck = setTimeout(() => {
+      setCurrentLength(currentValueLength + ' characters');
+      setTimeout(() => {
+        setCurrentLength('');
+      }, 2000);
+    }, 2000);
+  };
 
   return (
     <Wrap>
@@ -34,8 +43,8 @@ const NewIssue = () => {
             <WriteButton>Write</WriteButton>
           </CommentWrap>
           <CommentImageButtonWrap>
-            <ContentLength>0 characters</ContentLength>
-            <CommentTextarea placeholder="Leave a comment" onChange={contentLength}></CommentTextarea>
+            <ContentLength>{currentLength}</ContentLength>
+            <CommentTextarea placeholder="Leave a comment" onKeyUp={contentLength}></CommentTextarea>
             <ImageAttachButton htmlFor="file">Attach files by selecting here</ImageAttachButton>
             <Input id="file" type="file" accept=".jpg, .jpeg, .png" onChange={uploadImage} />
           </CommentImageButtonWrap>
@@ -236,6 +245,7 @@ const MobileSubmitButtonWrap = styled.div`
 
 const ContentLength = styled.div`
   position: absolute;
+  display: block;
   bottom: 40px;
   right: 25px;
   font-size: ${({ theme }) => theme.fontSize.micro};
