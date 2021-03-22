@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import { mobileModeWidth, responsiveHeight, tabletModeWidth } from '@/common/constants/responsiveSize';
 
@@ -9,6 +10,8 @@ import BlueButton from '@/components/UI/Button/BlueButton';
 import profile from '@/image/profile.jpg';
 
 const NewIssue = () => {
+  const history = useHistory();
+
   const [currentLength, setCurrentLength] = useState();
 
   const uploadImage = (e) => {
@@ -32,6 +35,10 @@ const NewIssue = () => {
     }, 2000);
   };
 
+  const cancelButtonClickHandler = () => {
+    history.push('/');
+  };
+
   return (
     <Wrap>
       <NewIssueContentWrap>
@@ -49,7 +56,7 @@ const NewIssue = () => {
             <Input id="file" type="file" accept=".jpg, .jpeg, .png" onChange={uploadImage} />
           </CommentImageButtonWrap>
           <CancelSubmitButtonWrap>
-            <CancelButton>Cancel</CancelButton>
+            <CancelButton onClick={cancelButtonClickHandler}>Cancel</CancelButton>
             <SubmitButtonWrap>
               <BlueButton size="small" title="Submit new issue" />
             </SubmitButtonWrap>
