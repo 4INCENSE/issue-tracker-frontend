@@ -1,18 +1,29 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const BlueButton = ({ title, onClick, size }) => {
-  return (
-    <>
-      {size === 'small' ? (
+const BlueButton = ({ title, onClick, type }) => {
+  switch (type) {
+    case 'small':
+      return (
         <Button small onClick={onClick}>
           {title}
         </Button>
-      ) : (
-        <Button onClick={onClick}>{title}</Button>
-      )}
-    </>
-  );
+      );
+    case 'block':
+      return (
+        <Button block onClick={onClick}>
+          {title}
+        </Button>
+      );
+    case 'smallBlock':
+      return (
+        <Button small block onClick={onClick}>
+          {title}
+        </Button>
+      );
+    default:
+      return <Button onClick={onClick}>{title}</Button>;
+  }
 };
 
 export default BlueButton;
@@ -37,6 +48,18 @@ const Button = styled.button`
       return css`
         font-size: ${({ theme }) => theme.fontSize.small};
         font-weight: bold;
+      `;
+    }
+  }};
+
+  ${(props) => {
+    if (props.block) {
+      return css`
+        opacity: 0.5;
+        cursor: not-allowed;
+        &:hover {
+          background: ${({ theme }) => theme.Main.newIssueButton.background};
+        }
       `;
     }
   }};
