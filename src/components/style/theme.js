@@ -19,6 +19,13 @@ const color = {
   themeIvory: '#c4c2b9'
 };
 
+const themeColor = {
+  border: color.themeIvory,
+  inputHover: color.themeLightWine,
+  buttonBackground: color.themeBlue,
+  buttonHover: color.themeDarkBlue
+};
+
 const header = {
   background: color.themeWine,
   menuHover: color.themeBlue
@@ -27,8 +34,8 @@ const header = {
 const Main = {
   filter: {
     buttonBackground: color.themeSuperLightIvory,
-    inputHover: color.themeLightWine,
-    border: color.themeIvory,
+    inputHover: themeColor.inputHover,
+    border: themeColor.border,
     buttonHover: color.themeSuperLightIvory
   },
   labelMilestoneTap: {
@@ -37,15 +44,15 @@ const Main = {
     tapNumber: color.themeIvory
   },
   newIssueButton: {
-    background: color.themeBlue,
-    hover: color.themeDarkBlue,
+    background: themeColor.buttonBackground,
+    hover: themeColor.buttonHover,
     mobileBackground: color.themeTransparentBlue
   },
   filterButton: {
-    border: color.themeIvory
+    border: themeColor.border
   },
   list: {
-    border: color.themeIvory,
+    border: themeColor.border,
     background: color.themeSuperLightIvory,
     hover: color.themeSuperLightIvory
   },
@@ -54,4 +61,16 @@ const Main = {
   }
 };
 
-export default { fontSize, color, header, Main };
+const NewIssue = {
+  content: {
+    border: themeColor.border,
+    inputHover: themeColor.inputHover,
+    inputBackground: color.themeSuperLightIvory
+  },
+  submitButton: {
+    background: themeColor.buttonBackground,
+    hover: themeColor.buttonHover
+  }
+};
+
+export default { fontSize, color, header, Main, NewIssue };

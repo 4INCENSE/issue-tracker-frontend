@@ -1,35 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import { mobileModeWidth, tabletModeWidth } from '@/common/constants/responsiveSize';
 
+import BlueButton from '@/components/UI/Button/BlueButton';
+
 const NewIssueButton = () => {
+  const history = useHistory();
+
+  const newIssueButtonClickHandler = () => {
+    history.push('/newIssue');
+  };
+
   return (
     <>
-      <Button>New issue</Button>
-      <MobileButton>+</MobileButton>
+      <ButtonWrap>
+        <BlueButton title="New issue" minWidth="105px" onClick={newIssueButtonClickHandler} />
+      </ButtonWrap>
+      <MobileButton onClick={newIssueButtonClickHandler}>+</MobileButton>
     </>
   );
 };
 
 export default NewIssueButton;
 
-const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 105px;
-  border-radius: 5px;
-  color: white;
-  font-size: ${({ theme }) => theme.fontSize.regular};
-  padding: 10px 15px;
+const ButtonWrap = styled.div`
+  min-width: 104px;
   margin: 0 0 0 10px;
-  background: ${({ theme }) => theme.Main.newIssueButton.background};
-  cursor: pointer;
-  &:hover {
-    background: ${({ theme }) => theme.Main.newIssueButton.hover};
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2) inset;
-  }
   @media only screen and (max-width: ${mobileModeWidth}) and (max-width: ${tabletModeWidth}) {
     display: none;
   }

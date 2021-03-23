@@ -4,7 +4,6 @@ import styled, { css, keyframes } from 'styled-components';
 import { mobileModeWidth, responsiveHeight, tabletModeWidth } from '@/common/constants/responsiveSize';
 
 import Wrap from '@/components/UI/Layout/Wrap';
-import Header from '@/components/Header/Header';
 import FIlters from '@/components/Main/Filters/Filters';
 import LabelMilestoneTap from '@/components/Main/LabelMilestoneTap/LabelMilestoneTap';
 import NewIssueButton from '@/components/Main/NewIssueButton/NewIssueButton';
@@ -14,7 +13,6 @@ import IssueList from '@/components/Main/IssueList/IssueList';
 const Main = () => {
   return (
     <>
-      <Header />
       <Wrap>
         <MainContentWrap>
           <HeadWrap>
