@@ -13,6 +13,7 @@ const NewIssue = () => {
   const history = useHistory();
 
   const [currentLength, setCurrentLength] = useState();
+  const [activeSubmitButton, setActiveSubmitButton] = useState(false);
 
   const uploadImage = (e) => {
     const currentFile = e.target.files[0];
@@ -35,6 +36,11 @@ const NewIssue = () => {
     }, 2000);
   };
 
+  const activateSubmitButton = (e) => {
+    const contentLength = e.target.value.length;
+    contentLength > 0 ? setActiveSubmitButton(true) : setActiveSubmitButton(false);
+  };
+
   const cancelButtonClickHandler = () => {
     history.push('/');
   };
@@ -45,7 +51,7 @@ const NewIssue = () => {
         <WriterProfile src={profile} />
         <IssueContentWrap>
           <Square></Square>
-          <TitleInput placeholder="Title" />
+          <TitleInput onKeyUp={activateSubmitButton} placeholder="Title" />
           <CommentWrap>
             <WriteButton>Write</WriteButton>
           </CommentWrap>
@@ -58,7 +64,11 @@ const NewIssue = () => {
           <CancelSubmitButtonWrap>
             <CancelButton onClick={cancelButtonClickHandler}>Cancel</CancelButton>
             <SubmitButtonWrap>
-              <BlueButton size="small" title="Submit new issue" />
+              {!activeSubmitButton ? (
+                <BlueButton type="smallBlock" title="Submit new issue" />
+              ) : (
+                <BlueButton type="small" title="Submit new issue" />
+              )}
             </SubmitButtonWrap>
           </CancelSubmitButtonWrap>
         </IssueContentWrap>
