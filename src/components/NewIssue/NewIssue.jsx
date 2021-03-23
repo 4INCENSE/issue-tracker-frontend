@@ -74,7 +74,11 @@ const NewIssue = () => {
         </IssueContentWrap>
         <SidebarWrap></SidebarWrap>
         <MobileSubmitButtonWrap>
-          <BlueButton title="Submit new issue" />
+          {!activeSubmitButton ? (
+            <BlueButton type="block" title="Submit new issue" />
+          ) : (
+            <BlueButton title="Submit new issue" />
+          )}{' '}
         </MobileSubmitButtonWrap>
       </NewIssueContentWrap>
     </Wrap>
