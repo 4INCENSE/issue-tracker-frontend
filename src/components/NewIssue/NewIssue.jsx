@@ -21,7 +21,7 @@ const NewIssue = () => {
 
   let debounceCheck = null;
 
-  const contentLength = (e) => {
+  const showContentLength = (e) => {
     const currentValueLength = e.target.value.length;
 
     if (debounceCheck) {
@@ -51,7 +51,7 @@ const NewIssue = () => {
           </CommentWrap>
           <CommentImageButtonWrap>
             <ContentLength>{currentLength}</ContentLength>
-            <CommentTextarea placeholder="Leave a comment" onKeyUp={contentLength}></CommentTextarea>
+            <CommentTextarea onKeyUp={showContentLength} placeholder="Leave a comment"></CommentTextarea>
             <ImageAttachButton htmlFor="file">Attach files by selecting here</ImageAttachButton>
             <Input id="file" type="file" accept=".jpg, .jpeg, .png" onChange={uploadImage} />
           </CommentImageButtonWrap>
