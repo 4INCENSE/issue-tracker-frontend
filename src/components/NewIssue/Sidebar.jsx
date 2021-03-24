@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import settingIcon from '@/image/icon/settings.svg';
 import settingBlue from '@/image/icon/settingsBlue.svg';
 
+import { mobileModeWidth } from '@/common/constants/responsiveSize';
+
 const Sidebar = () => {
   return (
     <Wrap>
@@ -63,6 +65,9 @@ const SidebarSelectWrap = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 10px;
+  @media only screen and (max-width: ${mobileModeWidth}) {
+    padding: 20px;
+  }
 `;
 
 const TitleIconWrap = styled.div`
