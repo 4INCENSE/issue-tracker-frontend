@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import arrow from '@/image/icon/arrow-point-to-down.svg';
@@ -6,39 +6,49 @@ import checked from '@/image/icon/checked.svg';
 import profile from '@/image/profile.jpg';
 
 const FilterButton = ({ title }) => {
+  const [isShownPopup, setIsShownPopup] = useState(false);
+
+  const filterButtonClickHandler = () => {
+    setIsShownPopup(!isShownPopup);
+  };
+
   return (
-    <Wrap>
+    <Wrap onClick={filterButtonClickHandler}>
       {title}
       <img src={arrow} />
-      <ListPopupWrap>
-        <ListPopupMenu first>Filter by label</ListPopupMenu>
-        <ListPopupMenu>
-          <UserListContent>
+      {isShownPopup ? (
+        <ListPopupWrap>
+          <ListPopupMenu first>Filter by label</ListPopupMenu>
+          <ListPopupMenu>
+            <UserListContent>
+              <CheckedIcon>
+                <img src={checked} />
+              </CheckedIcon>
+              <img src={profile} /> hyewon3938 <span>Joy</span>
+            </UserListContent>
+          </ListPopupMenu>
+          <ListPopupMenu>
+            <LabelContent>
+              <CheckedIcon>
+                <img src={checked} />
+              </CheckedIcon>
+              <LabelColor />
+              <LabelDescriptionWrap>
+                feature
+                <span>New feature or request</span>
+              </LabelDescriptionWrap>
+            </LabelContent>
+          </ListPopupMenu>
+          <ListPopupMenu>
             <CheckedIcon>
               <img src={checked} />
             </CheckedIcon>
-            <img src={profile} /> hyewon3938 <span>Joy</span>
-          </UserListContent>
-        </ListPopupMenu>
-        <ListPopupMenu>
-          <LabelContent>
-            <CheckedIcon>
-              <img src={checked} />
-            </CheckedIcon>
-            <LabelColor />
-            <LabelDescriptionWrap>
-              feature
-              <span>New feature or request</span>
-            </LabelDescriptionWrap>
-          </LabelContent>
-        </ListPopupMenu>
-        <ListPopupMenu>
-          <CheckedIcon>
-            <img src={checked} />
-          </CheckedIcon>
-          <MilestoneContent>스프린트2</MilestoneContent>
-        </ListPopupMenu>
-      </ListPopupWrap>
+            <MilestoneContent>스프린트2</MilestoneContent>
+          </ListPopupMenu>
+        </ListPopupWrap>
+      ) : (
+        ''
+      )}
     </Wrap>
   );
 };
@@ -49,7 +59,7 @@ const ListPopupWrap = styled.div`
   position: absolute;
   top: 25px;
   right: 0;
-  display: none;
+  display: flex;
   flex-direction: column;
   min-width: 210px;
   border: 1px solid ${({ theme }) => theme.Main.filterButton.border};
@@ -64,9 +74,6 @@ const Wrap = styled.div`
   img {
     margin: 0 0 0 5px;
     width: 12px;
-  }
-  &:hover ${ListPopupWrap} {
-    display: flex;
   }
 `;
 
