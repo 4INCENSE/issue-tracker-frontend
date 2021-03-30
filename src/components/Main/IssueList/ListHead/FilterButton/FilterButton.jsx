@@ -12,48 +12,73 @@ const FilterButton = ({ title }) => {
     setIsShownPopup(!isShownPopup);
   };
 
+  const popupCloseClickHandler = () => {
+    setIsShownPopup(false);
+  };
+
   return (
-    <Wrap onClick={filterButtonClickHandler}>
-      {title}
-      <img src={arrow} />
-      {isShownPopup ? (
-        <ListPopupWrap>
-          <ListPopupMenu first>Filter by label</ListPopupMenu>
-          <ListPopupMenu>
-            <UserListContent>
+    <>
+      {isShownPopup ? <PopupCloseWrap onClick={popupCloseClickHandler} /> : ''}
+      <Wrap>
+        <span onClick={filterButtonClickHandler}>
+          {title}
+          <img src={arrow} />
+        </span>
+        {isShownPopup ? (
+          <ListPopupWrap>
+            <ListPopupMenu first>Filter by label</ListPopupMenu>
+            <ListPopupMenu>
+              <UserListContent>
+                <CheckedIcon>
+                  <img src={checked} />
+                </CheckedIcon>
+                <img src={profile} /> hyewon3938 <span>Joy</span>
+              </UserListContent>
+            </ListPopupMenu>
+            <ListPopupMenu>
+              <LabelContent>
+                <CheckedIcon>
+                  <img src={checked} />
+                </CheckedIcon>
+                <LabelColor />
+                <LabelDescriptionWrap>
+                  feature
+                  <span>New feature or request</span>
+                </LabelDescriptionWrap>
+              </LabelContent>
+            </ListPopupMenu>
+            <ListPopupMenu>
               <CheckedIcon>
                 <img src={checked} />
               </CheckedIcon>
-              <img src={profile} /> hyewon3938 <span>Joy</span>
-            </UserListContent>
-          </ListPopupMenu>
-          <ListPopupMenu>
-            <LabelContent>
-              <CheckedIcon>
-                <img src={checked} />
-              </CheckedIcon>
-              <LabelColor />
-              <LabelDescriptionWrap>
-                feature
-                <span>New feature or request</span>
-              </LabelDescriptionWrap>
-            </LabelContent>
-          </ListPopupMenu>
-          <ListPopupMenu>
-            <CheckedIcon>
-              <img src={checked} />
-            </CheckedIcon>
-            <MilestoneContent>스프린트2</MilestoneContent>
-          </ListPopupMenu>
-        </ListPopupWrap>
-      ) : (
-        ''
-      )}
-    </Wrap>
+              <MilestoneContent>스프린트2</MilestoneContent>
+            </ListPopupMenu>
+          </ListPopupWrap>
+        ) : (
+          ''
+        )}
+      </Wrap>
+    </>
   );
 };
 
 export default FilterButton;
+
+const Wrap = styled.div`
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  margin: auto 15px;
+  img {
+    margin: 0 0 0 5px;
+    width: 12px;
+  }
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 const ListPopupWrap = styled.div`
   position: absolute;
@@ -65,16 +90,16 @@ const ListPopupWrap = styled.div`
   border: 1px solid ${({ theme }) => theme.Main.filterButton.border};
   border-radius: 5px;
   background: white;
+  z-index: 2;
 `;
-const Wrap = styled.div`
-  position: relative;
-  display: flex;
-  cursor: pointer;
-  margin: auto 15px;
-  img {
-    margin: 0 0 0 5px;
-    width: 12px;
-  }
+
+const PopupCloseWrap = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 `;
 
 const ListPopupMenu = styled.div`
