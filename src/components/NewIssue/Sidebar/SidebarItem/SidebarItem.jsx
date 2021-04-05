@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import settingIcon from '@/image/icon/settings.svg';
 import settingBlue from '@/image/icon/settingsBlue.svg';
 
+import SidebarPopup from '@/components/NewIssue/Sidebar/SidebarPopup/SidebarPopup';
+
 import { mobileModeWidth } from '@/common/constants/responsiveSize';
 
-const Sidebar = () => {
+const SidebarItem = ({ title }) => {
+  const [isShownPopup, setIsShownPopup] = useState(false);
+
+  const sidebarTitleClickHandler = () => {
+    setIsShownPopup(!isShownPopup);
+  };
+
+  const popupCloseClickHandler = () => {
+    setIsShownPopup(false);
+  };
+
   return (
-    <Wrap>
+    <>
+      {isShownPopup ? <PopupCloseWrap onClick={popupCloseClickHandler} /> : ''}
       <SidebarSelectWrap>
-        <TitleIconWrap>
-          Assignees
+        {isShownPopup ? <SidebarPopup /> : ''}
+        <TitleIconWrap onClick={sidebarTitleClickHandler}>
+          {title}
           <img src={settingIcon} />
           <HoverIcon src={settingBlue} />
         </TitleIconWrap>
@@ -21,39 +35,11 @@ const Sidebar = () => {
           </SelectedItem>
         </SelectedList>
       </SidebarSelectWrap>
-      <SidebarSelectWrap>
-        <TitleIconWrap>
-          Labels
-          <img src={settingIcon} />
-          <HoverIcon src={settingBlue} />
-        </TitleIconWrap>
-        <SelectedList>
-          <SelectedItem>None yet</SelectedItem>
-        </SelectedList>
-      </SidebarSelectWrap>
-      <SidebarSelectWrap>
-        <TitleIconWrap>
-          Milestone
-          <img src={settingIcon} />
-          <HoverIcon src={settingBlue} />
-        </TitleIconWrap>
-        <SelectedList>
-          <SelectedItem>No milestone</SelectedItem>
-        </SelectedList>
-      </SidebarSelectWrap>
-    </Wrap>
+    </>
   );
 };
 
-export default Sidebar;
-
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`;
+export default SidebarItem;
 
 const HoverIcon = styled.img`
   display: none;
@@ -61,6 +47,7 @@ const HoverIcon = styled.img`
 `;
 
 const SidebarSelectWrap = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -116,4 +103,12 @@ const SelectedItem = styled.div`
       color: ${({ theme }) => theme.color.themeBlue};
     }
   }
+`;
+const PopupCloseWrap = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 `;
