@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import settingIcon from '@/image/icon/settings.svg';
@@ -10,6 +10,36 @@ import { mobileModeWidth } from '@/common/constants/responsiveSize';
 
 const SidebarItem = ({ title }) => {
   const [isShownPopup, setIsShownPopup] = useState(false);
+  const [defaultItem, setDefaultItem] = useState();
+
+  useEffect(() => {
+    const setting = {
+      Assignee: setDefaultItem(
+        <>
+          No one ㅡ <span>assign yourself</span>
+        </>
+      ),
+      Labels: setDefaultItem(<>None yet</>),
+      Milestone: setDefaultItem(<>No milestone</>)
+    };
+    switch (title) {
+      case 'Assignee':
+        setDefaultItem(
+          <>
+            No one ㅡ <span>assign yourself</span>
+          </>
+        );
+        break;
+      case 'Labels':
+        setDefaultItem(<>None yet</>);
+        break;
+      case 'Milestone':
+        setDefaultItem(<>No Milestone</>);
+        break;
+      default:
+        break;
+    }
+  }, []);
 
   const sidebarTitleClickHandler = () => {
     setIsShownPopup(!isShownPopup);
@@ -30,9 +60,7 @@ const SidebarItem = ({ title }) => {
           <HoverIcon src={settingBlue} />
         </TitleIconWrap>
         <SelectedList>
-          <SelectedItem>
-            No one ㅡ <span>assign yourself</span>
-          </SelectedItem>
+          <SelectedItem>{defaultItem}</SelectedItem>
         </SelectedList>
       </SidebarSelectWrap>
     </>

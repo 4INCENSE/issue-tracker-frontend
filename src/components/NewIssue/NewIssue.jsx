@@ -6,7 +6,7 @@ import { mobileModeWidth, responsiveHeight, tabletModeWidth } from '@/common/con
 
 import Wrap from '@/components/UI/Layout/Wrap';
 import BlueButton from '@/components/UI/Button/BlueButton';
-import Sidebar from '@/components/NewIssue/Sidebar';
+import Sidebar from '@/components/NewIssue/Sidebar/Sidebar';
 import profile from '@/image/profile.jpg';
 
 const NewIssue = () => {
