@@ -6,38 +6,67 @@ import profile from '@/image/profile.jpg';
 
 import { mobileModeWidth } from '@/common/constants/responsiveSize';
 
-const SidebarPopup = () => {
-  return (
-    <ListPopupWrap>
-      <ListPopupMenu first>Filter by label</ListPopupMenu>
-      <ListPopupMenu>
-        <UserListContent>
-          <CheckedIcon>
-            <img src={checked} />
-          </CheckedIcon>
-          <img src={profile} /> hyewon3938 <span>Joy</span>
-        </UserListContent>
-      </ListPopupMenu>
-      <ListPopupMenu>
-        <LabelContent>
-          <CheckedIcon>
-            <img src={checked} />
-          </CheckedIcon>
-          <LabelColor />
-          <LabelDescriptionWrap>
-            feature
-            <span>New feature or request</span>
-          </LabelDescriptionWrap>
-        </LabelContent>
-      </ListPopupMenu>
-      <ListPopupMenu>
-        <CheckedIcon>
-          <img src={checked} />
-        </CheckedIcon>
-        <MilestoneContent>스프린트2</MilestoneContent>
-      </ListPopupMenu>
-    </ListPopupWrap>
-  );
+const SidebarPopup = ({ title }) => {
+  const setListPopupMenu = (title) => {
+    switch (title) {
+      case 'Assignee':
+        return (
+          <>
+            <ListPopupMenu first>Assign up to 10 people to this issue</ListPopupMenu>
+            <ListPopupMenu>
+              <UserListContent>
+                <CheckedIcon>
+                  <img src={checked} />
+                </CheckedIcon>
+                <img src={profile} /> hyewon3938 <span>Joy</span>
+              </UserListContent>
+            </ListPopupMenu>
+            <ListPopupMenu>
+              <UserListContent>
+                <CheckedIcon>
+                  <img src={checked} />
+                </CheckedIcon>
+                <img src={profile} /> hyewon3938 <span>Joy</span>
+              </UserListContent>
+            </ListPopupMenu>
+          </>
+        );
+      case 'Labels':
+        return (
+          <>
+            <ListPopupMenu first>Apply labels to this issue</ListPopupMenu>{' '}
+            <ListPopupMenu>
+              <LabelContent>
+                <CheckedIcon>
+                  <img src={checked} />
+                </CheckedIcon>
+                <LabelColor />
+                <LabelDescriptionWrap>
+                  feature
+                  <span>New feature or request</span>
+                </LabelDescriptionWrap>
+              </LabelContent>
+            </ListPopupMenu>
+          </>
+        );
+      case 'Milestone':
+        return (
+          <>
+            <ListPopupMenu first>Set milestone</ListPopupMenu>{' '}
+            <ListPopupMenu>
+              <CheckedIcon>
+                <img src={checked} />
+              </CheckedIcon>
+              <MilestoneContent>스프린트2</MilestoneContent>
+            </ListPopupMenu>
+          </>
+        );
+      default:
+        break;
+    }
+  };
+
+  return <ListPopupWrap>{setListPopupMenu(title)}</ListPopupWrap>;
 };
 
 export default SidebarPopup;
