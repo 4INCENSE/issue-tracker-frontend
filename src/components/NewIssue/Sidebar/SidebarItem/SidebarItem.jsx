@@ -13,15 +13,6 @@ const SidebarItem = ({ title }) => {
   const [defaultItem, setDefaultItem] = useState();
 
   useEffect(() => {
-    const setting = {
-      Assignee: setDefaultItem(
-        <>
-          No one ㅡ <span>assign yourself</span>
-        </>
-      ),
-      Labels: setDefaultItem(<>None yet</>),
-      Milestone: setDefaultItem(<>No milestone</>)
-    };
     switch (title) {
       case 'Assignee':
         setDefaultItem(
