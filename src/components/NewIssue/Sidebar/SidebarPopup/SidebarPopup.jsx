@@ -1,32 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 
-import arrow from '@/image/icon/arrow-point-to-down.svg';
 import checked from '@/image/icon/checked.svg';
 import profile from '@/image/profile.jpg';
 
-const FilterButton = ({ title }) => {
-  const [isShownPopup, setIsShownPopup] = useState(false);
+import { mobileModeWidth } from '@/common/constants/responsiveSize';
 
-  const filterButtonClickHandler = () => {
-    setIsShownPopup(!isShownPopup);
-  };
-
-  const popupCloseClickHandler = () => {
-    setIsShownPopup(false);
-  };
-
-  return (
-    <>
-      {isShownPopup ? <PopupCloseWrap onClick={popupCloseClickHandler} /> : ''}
-      <Wrap>
-        <span onClick={filterButtonClickHandler}>
-          {title}
-          <img src={arrow} />
-        </span>
-        {isShownPopup ? (
-          <ListPopupWrap>
-            <ListPopupMenu first>Filter by label</ListPopupMenu>
+const SidebarPopup = ({ title }) => {
+  const setListPopupMenu = (title) => {
+    switch (title) {
+      case 'Assignee':
+        return (
+          <>
+            <ListPopupMenu first>Assign up to 10 people to this issue</ListPopupMenu>
             <ListPopupMenu>
               <UserListContent>
                 <CheckedIcon>
@@ -35,6 +21,20 @@ const FilterButton = ({ title }) => {
                 <img src={profile} /> hyewon3938 <span>Joy</span>
               </UserListContent>
             </ListPopupMenu>
+            <ListPopupMenu>
+              <UserListContent>
+                <CheckedIcon>
+                  <img src={checked} />
+                </CheckedIcon>
+                <img src={profile} /> hyewon3938 <span>Joy</span>
+              </UserListContent>
+            </ListPopupMenu>
+          </>
+        );
+      case 'Labels':
+        return (
+          <>
+            <ListPopupMenu first>Apply labels to this issue</ListPopupMenu>{' '}
             <ListPopupMenu>
               <LabelContent>
                 <CheckedIcon>
@@ -47,59 +47,45 @@ const FilterButton = ({ title }) => {
                 </LabelDescriptionWrap>
               </LabelContent>
             </ListPopupMenu>
+          </>
+        );
+      case 'Milestone':
+        return (
+          <>
+            <ListPopupMenu first>Set milestone</ListPopupMenu>{' '}
             <ListPopupMenu>
               <CheckedIcon>
                 <img src={checked} />
               </CheckedIcon>
               <MilestoneContent>스프린트2</MilestoneContent>
             </ListPopupMenu>
-          </ListPopupWrap>
-        ) : (
-          ''
-        )}
-      </Wrap>
-    </>
-  );
+          </>
+        );
+      default:
+        break;
+    }
+  };
+
+  return <ListPopupWrap>{setListPopupMenu(title)}</ListPopupWrap>;
 };
 
-export default FilterButton;
-
-const Wrap = styled.div`
-  position: relative;
-  display: flex;
-  cursor: pointer;
-  margin: auto 15px;
-  img {
-    margin: 0 0 0 5px;
-    width: 12px;
-  }
-  span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
+export default SidebarPopup;
 
 const ListPopupWrap = styled.div`
   position: absolute;
-  top: 25px;
-  right: 0;
+  top: 30px;
   display: flex;
   flex-direction: column;
-  min-width: 210px;
+  width: 95%;
   border: 1px solid ${({ theme }) => theme.Main.filterButton.border};
   border-radius: 5px;
   background: white;
   z-index: 2;
-`;
-
-const PopupCloseWrap = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+  @media only screen and (max-width: ${mobileModeWidth}) {
+    width: 90%;
+    top: 50px;
+    left: auto;
+  }
 `;
 
 const ListPopupMenu = styled.div`

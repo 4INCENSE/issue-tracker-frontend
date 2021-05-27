@@ -6,7 +6,7 @@ import { mobileModeWidth, responsiveHeight, tabletModeWidth } from '@/common/con
 
 import Wrap from '@/components/UI/Layout/Wrap';
 import BlueButton from '@/components/UI/Button/BlueButton';
-
+import Sidebar from '@/components/NewIssue/Sidebar/Sidebar';
 import profile from '@/image/profile.jpg';
 
 const NewIssue = () => {
@@ -72,9 +72,15 @@ const NewIssue = () => {
             </SubmitButtonWrap>
           </CancelSubmitButtonWrap>
         </IssueContentWrap>
-        <SidebarWrap></SidebarWrap>
+        <SidebarWrap>
+          <Sidebar />
+        </SidebarWrap>
         <MobileSubmitButtonWrap>
-          <BlueButton title="Submit new issue" />
+          {!activeSubmitButton ? (
+            <BlueButton type="block" title="Submit new issue" />
+          ) : (
+            <BlueButton title="Submit new issue" />
+          )}
         </MobileSubmitButtonWrap>
       </NewIssueContentWrap>
     </Wrap>
@@ -127,8 +133,7 @@ const IssueContentWrap = styled.div`
 const SidebarWrap = styled.div`
   width: 25%;
   min-width: 200px;
-  height: 350px;
-  border: 1px solid red;
+
   @media only screen and (max-width: ${mobileModeWidth}) {
     width: 100%;
   }
